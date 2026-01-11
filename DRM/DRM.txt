@@ -1,0 +1,51 @@
+User
+-Registers / Logs in
+-Plays Sharp Streaks game
+-Spins daily spin wheel
+-Views coins & rewards
+
+-------------------------------------
+
+PROCESSES
+P1: Authentication (Firebase)
+-Input: Email, Password
+-Output: Firebase ID Token
+
+P2: Sharp Streaks Game Engine
+-Input: Start game request
+-Generates 5 questions(From gemini ai)
+-Accepts answers
+-Calculates score, accuracy, streak
+
+P3:Spin Engine
+-Input: Spin request
+-Validates daily spin
+-Generates random reward
+
+P4: Reward & Wallet Manager
+-Updates coins
+-Stores transactions
+-Updates XP & streak
+
+------------------------------------------
+
+DATA STORES
+
+D1: User Collection
+uid
+email
+coins
+xp
+streak
+lastSpinDate
+
+D2: GameSession Collection
+questions
+answers
+score
+accuracy
+completed
+
+D3: Wallet Collection
+balance
+transactions

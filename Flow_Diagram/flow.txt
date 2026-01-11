@@ -1,0 +1,25 @@
+User
+ │
+ │ Login/Register
+ ▼
+Authentication (Firebase)
+ │
+ │ Firebase ID Token
+ ▼
+Sharp Rewards Backend
+ │
+ ├──▶ User Data Store
+ │
+ ├──▶ Sharp Streaks Game Engine
+ │        └──▶ GameSession Store
+ │
+ ├──▶ Spin Engine
+ │
+ └──▶ Wallet Manager
+          └──▶ Wallet Store
+
+
+In Sharp Rewards, the user first authenticates using Firebase.
+After authentication, the user can play Sharp Streaks games or spin the daily wheel.
+Game answers and scores are stored in the GameSession data store, while rewards earned are updated in the Wallet data store.
+User data such as coins, XP, and streaks are updated accordingly.

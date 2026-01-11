@@ -3,7 +3,7 @@ const Game = require("../models/Game");
 const Wallet = require("../models/Wallet");
 const User = require("../models/User");
 const { calculateReward } = require("../services/gameEngine");
-const { getQuestionsFromGemini } = require("../services/geminiService");
+const { generateQuestions } = require("../services/geminiService");
 
 exports.startGame = async (req, res) => {
   const { gameId } = req.body;
@@ -11,10 +11,10 @@ exports.startGame = async (req, res) => {
   const game = await Game.findById(gameId);
   if (!game) return res.status(404).json({ error: "Game not found" });
 
-  const questions = await getQuestionsFromGemini({
-    type: game.type,
-    difficulty: game.difficulty,
-  });
+  // The Gemini service currently provides a generateQuestions() helper
+  // which returns an array of questions. It does not accept game params
+  // yet, so call it directly for now.
+  const questions = await generateQuestions();
 
   res.json({ game, questions });
 };

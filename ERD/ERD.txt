@@ -1,0 +1,40 @@
+Entity Relationship Details
+User (1) — (1) Wallet: This is a one-to-one relationship. Each user has exactly one wallet to track their coins and xp.
+
+User (1) — (N) GameSession: A one-to-many relationship. A single user can play many game sessions over time, but each session belongs to only one user.
+
+Wallet (1) — (N) Transaction: A one-to-many relationship. The wallet acts as a ledger. Every time a user earns a reward (from a game or a spin), a new transaction record is created and linked to that wallet.
+
+User
+-------------------------
+_id (PK)
+uid (Firebase UID)
+email
+name
+coins
+xp
+streak
+lastSpinDate
+createdAt
+
+
+GameSession
+-------------------------
+_id (PK)
+userId (FK)
+questions
+answers
+score
+accuracy
+timeTaken
+completed
+createdAt
+completedAt
+
+
+Transaction
+-------------------------
+type (GAME_REWARD | SPIN_REWARD)
+amount
+date
+
